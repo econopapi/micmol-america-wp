@@ -1,0 +1,41 @@
+/* Frontend styles for MicMol Main Hero block */
+.micmol-hero{padding:48px 24px;font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+.micmol-hero__inner{max-width:1280px;margin:0 auto;display:flex;gap:48px;align-items:center}
+.micmol-hero__content{flex:1;padding-right:28px}
+.micmol-hero__subtitle{font-size:13px;text-transform:uppercase;color:#7a8aa3;margin-bottom:12px}
+.micmol-hero__title{margin:0 0 18px}
+
+.micmol-hero__title--primary{
+    display:block;font-size:clamp(35px,4.5vw,75px);
+    font-weight:900;color:#0b0b0b;
+    line-height:0.92;margin:0;
+    letter-spacing:-1px
+}
+
+.micmol-hero__title--secondary{display:block;font-size:clamp(30px,4.5vw,75px);font-weight:300;color:#9aa0a6;margin-top:8px}
+.micmol-hero__desc{color:#6b6b6b;font-size:16px;max-width:560px;margin-bottom:24px}
+.micmol-hero__actions{margin-bottom:28px}
+.micmol-button{display:inline-block;padding:12px 22px;border-radius:28px;text-decoration:none;margin-right:12px}
+.micmol-button--primary{background:#0b73ff;color:#fff}
+.micmol-button--ghost{background:transparent;color:#0b73ff;border:1px solid rgba(11,115,255,0.12)}
+.micmol-hero__visual{width:480px;flex:0 0 480px;display:flex;align-items:center;justify-content:center}
+.micmol-hero__device{width:360px}
+
+.micmol-hero__device-frame{
+    background:#0b0b0b;
+    border-radius:34px;
+    box-shadow:0 40px 100px rgba(20,20,30,0.18);
+    border:12px solid rgba(0,0,0,0.9);
+}
+
+.micmol-hero__device-screen{background:linear-gradient(180deg,#0b0b0b,#0b0b0b);border-radius:18px;padding:16px}
+.micmol-hero__device-screen .micmol-hero__image{display:block;width:100%;height:auto;border-radius:14px;box-shadow:inset 0 0 0 6px rgba(255,255,255,0.03)}
+.micmol-hero__device-screen .micmol-hero__image--placeholder{width:100%;height:640px;display:flex;align-items:center;justify-content:center;color:#cfcfcf;padding:28px}
+.micmol-hero__meta{border-top:1px solid #eee;padding-top:18px;display:flex;gap:32px;color:#9aa0a6;font-size:13px}
+
+@media (max-width:1100px){
+    .micmol-hero__inner{flex-direction:column;align-items:flex-start}
+    .micmol-hero__visual{width:100%;flex:auto;margin-top:28px}
+    .micmol-hero__title--primary{font-size:36px}
+    .micmol-hero__title--secondary{font-size:34px}
+}
