@@ -1,0 +1,9 @@
+/* Frontend styles for MicMol Ecosystem Card block */
+.micmol-ecosystem-card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(20,20,30,0.06);border:1px solid rgba(11,115,255,0.06);display:flex;flex-direction:column;min-height:220px;justify-content:space-between;font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+.micmol-ecosystem-card__icon-wrap{width:56px;height:56px;border-radius:12px;background:#f6f7f8;display:flex;align-items:center;justify-content:center;margin-bottom:18px;flex-shrink:0}
+.micmol-ecosystem-card__icon{width:36px;height:36px;display:block}
+.micmol-ecosystem-card__title{margin:0 0 12px;font-size:20px;font-weight:700;color:#0b0b0b}
+.micmol-ecosystem-card__desc{color:#6b6b6b;font-size:15px;line-height:1.5;margin-bottom:18px;flex:1}
+.micmol-ecosystem-card__link{color:#0b73ff;text-decoration:none;font-weight:600}
+.micmol-ecosystem-card__link:hover{text-decoration:underline}
+@media (max-width:600px){.micmol-ecosystem-card{padding:18px}.micmol-ecosystem-card__title{font-size:18px}.micmol-ecosystem-card__desc{font-size:14px}}

@@ -132,3 +132,95 @@ function micmol_render_main_hero( $attributes, $content ) {
     <?php
     return ob_get_clean();
 }
+
+
+    /**
+     * Register MicMol Ecosystem Card block (single card used inside columns).
+     */
+    function micmol_register_ecosystem_card() {
+        $dir = get_stylesheet_directory();
+        $uri = get_stylesheet_directory_uri();
+
+        wp_register_script(
+            'micmol-ecosystem-card-editor',
+            $uri . '/custom-blocks/micmol-ecosystem-card/block.js',
+            array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n' ),
+            filemtime( $dir . '/custom-blocks/micmol-ecosystem-card/block.js' )
+        );
+
+        wp_register_style(
+            'micmol-ecosystem-card-editor-style',
+            $uri . '/custom-blocks/micmol-ecosystem-card/editor.css',
+            array( 'wp-edit-blocks' ),
+            filemtime( $dir . '/custom-blocks/micmol-ecosystem-card/editor.css' )
+        );
+
+        wp_register_style(
+            'micmol-ecosystem-card-style',
+            $uri . '/custom-blocks/micmol-ecosystem-card/style.css',
+            array(),
+            filemtime( $dir . '/custom-blocks/micmol-ecosystem-card/style.css' )
+        );
+
+        $card_attributes = array(
+            'subtitle'    => array( 'type' => 'string', 'default' => '' ),
+            'title'       => array( 'type' => 'string', 'default' => '' ),
+            'description' => array( 'type' => 'string', 'default' => '' ),
+            'linkText'    => array( 'type' => 'string', 'default' => 'Ver productos' ),
+            'linkUrl'     => array( 'type' => 'string', 'default' => '#' ),
+            'iconUrl'     => array( 'type' => 'string', 'default' => '' ),
+            'iconAlt'     => array( 'type' => 'string', 'default' => '' ),
+        );
+
+        register_block_type( 'micmol/micmol-ecosystem-card', array(
+            'editor_script'   => 'micmol-ecosystem-card-editor',
+            'editor_style'    => 'micmol-ecosystem-card-editor-style',
+            'style'           => 'micmol-ecosystem-card-style',
+            'attributes'      => $card_attributes,
+            'render_callback' => 'micmol_render_ecosystem_card',
+        ) );
+    }
+    add_action( 'init', 'micmol_register_ecosystem_card' );
+
+
+    /**
+     * Server render callback for the ecosystem card block.
+     */
+    function micmol_render_ecosystem_card( $attributes, $content ) {
+        $title       = isset( $attributes['title'] ) ? $attributes['title'] : '';
+        $description = isset( $attributes['description'] ) ? $attributes['description'] : '';
+        $link_text   = isset( $attributes['linkText'] ) ? $attributes['linkText'] : '';
+        $link_url    = isset( $attributes['linkUrl'] ) ? $attributes['linkUrl'] : '';
+        $icon_url    = isset( $attributes['iconUrl'] ) ? $attributes['iconUrl'] : '';
+        $icon_alt    = isset( $attributes['iconAlt'] ) ? $attributes['iconAlt'] : '';
+
+        ob_start();
+        ?>
+        <article class="micmol-ecosystem-card" role="group" aria-label="<?php echo esc_attr( $title ? $title : 'MicMol Ecosystem Card' ); ?>">
+            <div>
+                <?php if ( $icon_url ) : ?>
+                    <div class="micmol-ecosystem-card__icon-wrap">
+                        <img src="<?php echo esc_url( $icon_url ); ?>" alt="<?php echo esc_attr( $icon_alt ); ?>" class="micmol-ecosystem-card__icon" />
+                    </div>
+                <?php endif; ?>
+
+                <?php if ( $title ) : ?>
+                    <h3 class="micmol-ecosystem-card__title"><?php echo esc_html( $title ); ?></h3>
+                <?php endif; ?>
+
+                <?php if ( $description ) : ?>
+                    <div class="micmol-ecosystem-card__desc"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
+                <?php endif; ?>
+            </div>
+
+            <?php if ( $link_text ) : ?>
+                <div>
+                    <a class="micmol-ecosystem-card__link" href="<?php echo esc_url( $link_url ); ?>"><?php echo esc_html( $link_text ); ?> &rarr;</a>
+                </div>
+            <?php endif; ?>
+        </article>
+        <?php
+
+        return ob_get_clean();
+    }
+

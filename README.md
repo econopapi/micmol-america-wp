@@ -13,6 +13,12 @@ Licencia: Pendiente
 	- Estilos frontend: `custom-blocks/micmol-main-hero/style.css`
 	- Registro y render: `includes/blocks.php`
 
+- **MicMol Ecosystem Card**: Bloque de tarjeta individual para la sección "Ecosistema MicMol". Está pensado para usarse dentro de columnas para crear la fila de cards del mockup. Implementado en `custom-blocks/micmol-ecosystem-card/`.
+	- Editor: `custom-blocks/micmol-ecosystem-card/block.js`
+	- Estilos editor: `custom-blocks/micmol-ecosystem-card/editor.css`
+	- Estilos frontend: `custom-blocks/micmol-ecosystem-card/style.css`
+	- Registro y render: `includes/blocks.php` (función `micmol_register_ecosystem_card` / `micmol_render_ecosystem_card`)
+
 Notas:
 - El bloque está diseñado como dinámico (server-rendered) para mantener marcado accesible y fácil de actualizar.
 - Personalizable: título, subtítulo, descripción, texto/enlace de botones y imagen vertical.
